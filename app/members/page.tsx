@@ -23,7 +23,7 @@ function Page() {
   };
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 p-5">
       <ProfileCard profile={profile1} />
       <ProfileCard profile={profile2} />
     </div>

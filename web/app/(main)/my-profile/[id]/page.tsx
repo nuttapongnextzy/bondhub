@@ -1,8 +1,13 @@
 import { MyProfileForm } from "@/components/MyProfileForm";
-import { profiles } from "@/lib/placeholder-data";
+import { fetchUser } from "@/lib/data";
 
-function Page() {
-  const profile = profiles[0];
+type PageProps = {
+  params: { id: string };
+  searchParams?: { query?: string };
+};
+
+export default async function Page({ params, searchParams }: PageProps) {
+  const profile = await fetchUser(params.id);
 
   return (
     <div className="flex items-center justify-center">
@@ -12,5 +17,3 @@ function Page() {
     </div>
   );
 }
-
-export default Page;

@@ -1,4 +1,4 @@
-import { Profile } from "@/lib/profile";
+import { Profile } from "@/lib/definitions";
 
 const ProfileCard = ({ profile }: { profile: Profile }) => (
   <div className="bg-white rounded-lg shadow-md p-6 max-w-sm text-black">

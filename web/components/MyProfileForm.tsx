@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Profile } from "@/lib/profile";
+import { Profile } from "@/lib/definitions";
 
 const Input = ({ label, value }: { label: string; value: string }) => {
   return (

@@ -5,8 +5,8 @@ function Page() {
   const profile = profiles[0];
 
   return (
-    <div className="min-h-screen bg-gray-500 flex items-center justify-center">
-      <div>
+    <div className="flex items-center justify-center">
+      <div className="p-10">
         <MyProfileForm profile={profile} />
       </div>
     </div>

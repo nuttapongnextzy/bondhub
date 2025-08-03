@@ -17,7 +17,7 @@ const BurgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const menuItems = [
-    { name: "My Profile", href: "/my-profile", icon: User },
+    { name: "My Profile", href: "/my-profile/1", icon: User },
     { name: "Members", href: "/members", icon: Contact },
     { name: "Challenges", href: "/challenges", icon: Swords },
     // { name: "Games", href: "/games", icon: Gamepad },

@@ -19,7 +19,7 @@ export const users = [
     status: 'Happy',
     profileImage: 'https://api.dicebear.com/7.x/personas/svg?seed=John',
   },
-   {
+  {
     id: '3',
     email: 'cr7@nextzy.com',
     firstName: 'Cristiano',

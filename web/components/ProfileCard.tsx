@@ -16,8 +16,12 @@ const ProfileCard = ({ profile }: { profile: Profile }) => (
     </div>
     <div className="border-t-2 border-gray-400 my-4"></div>
     <div className="text-sm">
-      <div>Bio: {profile.bio}</div>
-      <div>Status: {profile.status}</div>
+      <div>
+        <span className="font-bold">Bio:</span> {profile.bio}
+      </div>
+      <div>
+        <span className="font-bold">Status:</span> {profile.status}
+      </div>
     </div>
   </div>
 );

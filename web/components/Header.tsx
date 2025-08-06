@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { login } from "@/lib/data";
 import { useRouter } from "next/navigation";
 import LoginFormModal from "@/components/LoginFormModal";
+import MyProfilebutton from "./MyProfileButton";
 
 export default function Header() {
   const router = useRouter();
@@ -26,14 +27,11 @@ export default function Header() {
 
   const handleLogin = async () => {
     setIsModalOpen(true);
-    // const token = await login("nuttapong.p@nextzy.com");
-    // Cookies.set("token", token, { expires: 1 });
-    // setIsLoggedIn(!!Cookies.get("token"));
   };
 
   const handleLogout = async () => {
     Cookies.remove("token");
-    setIsLoggedIn(!!Cookies.get("token"));
+    checkAuth();
   };
 
   return (
@@ -43,12 +41,7 @@ export default function Header() {
           <h1 className="font-bold text-3xl">Nextzy - BondHub</h1>
         </Link>
         {isLoggedIn ? (
-          <button
-            className="bg-blue-500 w-10 h-10 rounded-full hover:bg-blue-400 font-bold"
-            onClick={handleLogout}
-          >
-            Log out
-          </button>
+          <MyProfilebutton onLogout={handleLogout} />
         ) : (
           <button
             className="bg-blue-500 px-3 py-2 rounded hover:bg-blue-400 font-bold"

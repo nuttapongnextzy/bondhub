@@ -16,7 +16,7 @@ import {
 const menuItems = [
   { name: "Members", href: "/members", icon: Contact },
   { name: "Challenges", href: "/challenges", icon: Swords },
-  { name: "My Profile", href: "/my-profile/1", icon: User },
+//   { name: "My Profile", href: "/my-profile/1", icon: User },
   // { name: "Games", href: "/games", icon: Gamepad },
   // { name: "Settings", href: "/settings", icon: Settings },
   // { name: "Logout", href: "/logout", icon: LogOut },

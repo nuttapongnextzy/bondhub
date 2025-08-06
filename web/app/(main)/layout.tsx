@@ -1,6 +1,5 @@
 import SidebarMenu from "@/components/SidebarMenu";
 import Header from "@/components/Header";
-import LoginForm from "@/components/LoginForm";
 import LoginFormModal from "@/components/LoginFormModal";
 
 export default function MainLayout({

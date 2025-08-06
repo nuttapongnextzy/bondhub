@@ -2,7 +2,7 @@ import { Profile } from "@/lib/definitions";
 
 const baseUrl = "http://localhost:4000/api/";
 
-export async function fetchUsers() {
+export async function fetchUsers(): Promise<Profile[]> {
   const url = new URL(`${baseUrl}users`);
 
   const res = await fetch(url, {
@@ -13,23 +13,12 @@ export async function fetchUsers() {
     throw new Error(`fetch failed: ${res.statusText}`);
   }
 
-  const json = await res.json();
+  const json: Profile[] = await res.json();
 
-  const users: Profile[] = json.map((element: any) => ({
-    id: element.id,
-    email: element.email,
-    firstName: element.firstName,
-    lastName: element.lastName,
-    nickname: element.nickname,
-    bio: element.bio,
-    status: element.status,
-    profileImage: element.profileImage,
-  }));
-
-  return users;
+  return json;
 }
 
-export async function fetchUser(id: string) {
+export async function fetchUser(id: string): Promise<Profile> {
   const url = new URL(`${baseUrl}users/${id}`);
 
   const res = await fetch(url, {
@@ -40,18 +29,32 @@ export async function fetchUser(id: string) {
     throw new Error(`fetch failed: ${res.statusText}`);
   }
 
-  const element = await res.json();
+  const json: Profile = await res.json();
 
-  const user: Profile = {
-    id: element.id,
-    email: element.email,
-    firstName: element.firstName,
-    lastName: element.lastName,
-    nickname: element.nickname,
-    bio: element.bio,
-    status: element.status,
-    profileImage: element.profileImage,
-  };
+  return json;
+}
 
-  return user;
+export async function updateUser(
+  id: string,
+  data: Partial<Profile>
+): Promise<Profile> {
+  const url = new URL(`${baseUrl}users/${id}`);
+
+  console.log(`update user id: ${id} | data: ${data} `)
+
+  const res = await fetch(url, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (!res.ok) {
+    throw new Error(`update failed: ${res.statusText}`);
+  }
+
+  const updatedUser: Profile = await res.json();
+
+  return updatedUser;
 }

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Profile } from "@/lib/definitions";
+import { updateUser } from "@/lib/data";
 
 const Input = ({ label, value }: { label: string; value: string }) => {
   return (
@@ -21,7 +22,7 @@ const Input = ({ label, value }: { label: string; value: string }) => {
   );
 };
 
-const TexareaInput = ({
+const TextareaInput = ({
   label,
   value,
   rows,
@@ -50,8 +51,20 @@ const TexareaInput = ({
 export const MyProfileForm = ({ profile }: { profile: Profile }) => {
   const router = useRouter();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+
+    const updatedData = {
+      firstName: formData.get("First Name") as string,
+      lastName: formData.get("Last Name") as string,
+      nickname: formData.get("Nickname") as string,
+      bio: formData.get("Bio") as string,
+      status: formData.get("Status") as string,
+    };
+
+    updateUser(profile.id, updatedData);
 
     console.log("submit");
   };
@@ -63,8 +76,8 @@ export const MyProfileForm = ({ profile }: { profile: Profile }) => {
       <Input label={"First Name"} value={profile?.firstName} />
       <Input label={"Last Name"} value={profile?.lastName} />
       <Input label={"Nickname"} value={profile?.nickname} />
-      <TexareaInput label={"Bio"} value={profile?.bio} rows={4} />
-      <TexareaInput label={"Status"} value={profile?.status} rows={2} />
+      <TextareaInput label={"Bio"} value={profile?.bio} rows={4} />
+      <TextareaInput label={"Status"} value={profile?.status} rows={2} />
       <div className="text-center">
         <button
           type="submit"

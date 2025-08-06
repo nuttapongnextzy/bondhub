@@ -1,6 +1,7 @@
 import { Body, Controller, Get, Param, Patch } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { ParseIntPipe } from '@nestjs/common';
+import { UpdateUserDto } from './dto/update-user-dto';
 
 @Controller('users')
 export class UsersController {
@@ -17,7 +18,9 @@ export class UsersController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() dto: any) {
-    return `Update user ${id} with data ${JSON.stringify(dto)}`;
+  update(@Param('id', ParseIntPipe) id: number, @Body() dto: UpdateUserDto) {
+    console.log(`update: ${id}`);
+    console.log('dto:', dto);
+    return this.usersService.update(id, dto);
   }
 }

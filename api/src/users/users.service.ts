@@ -8,7 +8,7 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class UsersService {
   constructor(private prisma: PrismaService) {}
 
-  findAll(): Promise<UserResponseDto[]> {
+  async findAll(): Promise<UserResponseDto[]> {
     return this.prisma.user
       .findMany()
       .then((users) => users.map((user) => toUserResponseDto(user)));
@@ -26,6 +26,18 @@ export class UsersService {
     return toUserResponseDto(user);
   }
 
+  async findByEmail(email: string): Promise<UserResponseDto> {
+    const user = await this.prisma.user.findUnique({
+      where: { email },
+    });
+
+    if (!user) {
+      throw new NotFoundException(`User with email "${email}" not found`);
+    }
+
+    return toUserResponseDto(user);
+  }
+
   async update(id: number, dto: UpdateUserDto) {
     const user = await this.findOne(id);
 
@@ -34,6 +46,6 @@ export class UsersService {
       data: dto,
     });
 
-    return toUserResponseDto(updatedUser)
+    return toUserResponseDto(updatedUser);
   }
 }

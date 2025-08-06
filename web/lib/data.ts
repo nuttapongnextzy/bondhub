@@ -2,6 +2,26 @@ import { Profile } from "@/lib/definitions";
 
 const baseUrl = "http://localhost:4000/api/";
 
+export async function login(email: string): Promise<string> {
+  const url = new URL(`${baseUrl}auth/login`);
+
+  const res = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email }),
+  });
+
+  if (!res.ok) {
+    throw new Error(`fetch failed: ${res.statusText}`);
+  }
+
+  const json = await res.json();
+
+  return json.access_token;
+}
+
 export async function fetchUsers(): Promise<Profile[]> {
   const url = new URL(`${baseUrl}users`);
 
@@ -40,7 +60,7 @@ export async function updateUser(
 ): Promise<Profile> {
   const url = new URL(`${baseUrl}users/${id}`);
 
-  console.log(`update user id: ${id} | data: ${data} `)
+  console.log(`update user id: ${id} | data: ${data} `);
 
   const res = await fetch(url, {
     method: "PATCH",

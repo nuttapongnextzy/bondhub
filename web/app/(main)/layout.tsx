@@ -1,19 +1,5 @@
-import BurgerMenu from "@/components/BurgerMenu";
 import SidebarMenu from "@/components/SidebarMenu";
-import Link from "next/link";
-
-function Header() {
-  return (
-    <header className="bg-gray-400 shadow-lg p-4">
-      <div className="flex max-w-6xl mx-auto justify-between items-center">
-        <Link href="/" className="">
-          <h1 className="font-bold text-3xl">Nextzy - BondHub</h1>
-        </Link>
-        <BurgerMenu />
-      </div>
-    </header>
-  );
-}
+import Header from "@/components/Header";
 
 export default function MainLayout({
   children,

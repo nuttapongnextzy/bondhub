@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Profile } from "@/lib/definitions";
+import { profile } from "console";
 
 interface MyProfileButtonProps {
   user: Profile; 
@@ -47,7 +48,7 @@ export default function MyProfileButton({
         className="bg-blue-500 w-10 h-10 rounded-full hover:bg-blue-400 font-bold"
         onClick={() => setIsOpen(!isOpen)}
       >
-        Me
+        {user.email.slice(0,3)}
       </button>
 
       {/* Backdrop */}

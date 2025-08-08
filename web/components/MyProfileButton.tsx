@@ -1,15 +1,26 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { Profile } from "@/lib/definitions";
 
-export default function MyProfilebutton({ onLogout }: any) {
+interface MyProfileButtonProps {
+  user: Profile; 
+  onLogout: () => void;
+}
+
+export default function MyProfileButton({
+  user,
+  onLogout,
+}: MyProfileButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
 
   const handleMenuClick = (action: string, href?: string) => {
-    setIsOpen(false); // ปิด dropdown ก่อน
+    setIsOpen(false);
 
     if (action === "profile") {
-      router.push("/my-profile/1");
+      if (href) {
+        router.push(href);
+      }
     } else if (action === "logout") {
       onLogout();
       //   router.push("/");
@@ -19,8 +30,8 @@ export default function MyProfilebutton({ onLogout }: any) {
   const menuItems = [
     {
       name: "My Profile",
-      href: "/my-profile/1",
-      onClick: () => handleMenuClick("profile"),
+      href: `/my-profile/${user.id}`,
+      onClick: () => handleMenuClick("profile", `/my-profile/${user.id}`),
     },
     {
       name: "Log Out",

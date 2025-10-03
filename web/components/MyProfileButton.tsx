@@ -36,7 +36,7 @@ export default function MyProfileButton({
     },
     {
       name: "Log Out",
-      href: "/members",
+      href: "/home",
       onClick: () => handleMenuClick("logout"),
     },
   ];

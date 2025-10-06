@@ -1,4 +1,5 @@
-import ChallengeCard, { Challenge } from "@/components/ChallengeCard";
+import ChallengeCard from "@/components/ChallengeCard";
+import { Challenge } from "@/lib/definitions";
 
 async function Page() {
   const challenges: Challenge[] = [

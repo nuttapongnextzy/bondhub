@@ -4,18 +4,10 @@ import { Challenge } from "@/lib/definitions";
 async function Page() {
   const challenges: Challenge[] = [
     {
+      id: "1",
       title: "Typing",
-      description: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      imageUrl: "",
-    },
-    {
-      title: "C 2",
-      description: "aaaaaaaaaaaaaaa",
-      imageUrl: "",
-    },
-     {
-      title: "C 3",
-      description: "",
+      description:
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
       imageUrl: "",
     },
   ];
@@ -23,10 +15,7 @@ async function Page() {
   return (
     <div className="grid grid-cols-[repeat(auto-fill,_minmax(300px,_1fr))] gap-4 p-1">
       {challenges.map((challenge) => (
-        <ChallengeCard
-          key={challenge.title}
-          challenge= {challenge}
-        />
+        <ChallengeCard key={challenge.id} challenge={challenge} />
       ))}
     </div>
   );

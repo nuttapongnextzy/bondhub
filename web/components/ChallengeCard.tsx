@@ -1,5 +1,6 @@
 import { Challenge } from "@/lib/definitions";
 import Image from "next/image";
+import Link from "next/link";
 
 interface props {
   challenge: Challenge;
@@ -20,9 +21,11 @@ function ChallengeCard({ challenge }: props) {
           height={100}
         />
       )}
-      <button className="px-2 py-0 bg-blue-600 rounded hover:bg-blue-700 text-md">
-        Play
-      </button>
+      <Link href={`/challenges/${challenge.id}`}>
+        <button className="px-2 py-0 bg-blue-600 rounded hover:bg-blue-700 text-md">
+          Play
+        </button>
+      </Link>
     </div>
   );
 }

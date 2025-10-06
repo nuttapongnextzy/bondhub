@@ -1,6 +1,10 @@
 import { Profile } from "@/lib/definitions";
 
-const ProfileCard = ({ profile }: { profile: Profile }) => (
+interface props {
+  profile: Profile;
+}
+
+const ProfileCard = ({ profile }: props) => (
   <div className="bg-white rounded-lg shadow-md p-6 max-w-sm text-black">
     <div className="">
       <img

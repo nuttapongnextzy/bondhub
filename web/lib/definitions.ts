@@ -8,3 +8,9 @@ export interface Profile {
   status: string;
   profileImage: string;
 }
+
+export interface Challenge {
+  title: string;
+  description?: string;
+  imageUrl?: string;
+}
